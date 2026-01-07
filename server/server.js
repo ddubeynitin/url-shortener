@@ -14,7 +14,7 @@ const MONGODBURL = process.env.MONGODBURL;
 const corsOptions = {
   origin: process.env.FRONTEND_URL,
   optionsSuccessStatus: 200,
-};  
+};
 
 connectDB(MONGODBURL)
   .then(() => console.log("Connected to MongoDB"))
@@ -22,11 +22,6 @@ connectDB(MONGODBURL)
 
 app.use(express.json());
 
-console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
-
-app.use(cors(corsOptions)); // Enable CORS for all routes (development)
-
-app.use("/url", cors(corsOptions), urlRoute); // Use the url routes for /url endpoint
-
+app.use(cors(corsOptions), urlRoute);
 
 app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));

@@ -14,7 +14,7 @@ async function handleGenerateNewShortURL(req, res) {
         visitedHistory: [],
     });
 
-    return res.json({ id: shortID });
+    return res.json({ id: shortID, shortURL: `http://localhost:5000/${shortID}` });
 }
 
 async function handleRedirect(req, res) {
