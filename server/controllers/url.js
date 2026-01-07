@@ -5,6 +5,10 @@ async function handleGenerateNewShortURL(req, res) {
     const body = req.body;
 
     if( !body.url ) return res.status(400).json({ error: 'url is required'});
+    
+    if(body.url.startsWith("http://") === false && body.url.startsWith("https://") === false){
+      body.url = "https://" + body.url;
+    }
 
     const shortID = shortid();
 
@@ -14,7 +18,7 @@ async function handleGenerateNewShortURL(req, res) {
         visitedHistory: [],
     });
 
-    return res.json({ id: shortID, shortURL: `http://localhost:5000/${shortID}` });
+    return res.json({ id: shortID, shortURL: `localhost:5000/${shortID}` });
 }
 
 async function handleRedirect(req, res) {
