@@ -2,23 +2,37 @@ import { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import { FaCopy, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { PiCheckFatDuotone } from "react-icons/pi";
 
 const App = () => {
   const [longUrl, setLongUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
+  const [isCopied, setIsCopied] = useState(false);
 
   function shortenUrl() {
+    setIsCopied(false);
+    
+    if (!longUrl) {
+      alert("Please enter a valid URL");
+      return;
+    }
+    
     axios
-      .post("http://localhost:5000/url", { 
+      .post("http://localhost:5000/", {
         url: longUrl
       })
       .then((res) => {
         console.log(res.data);
-        setShortUrl(res.data.id);
+        setShortUrl(res.data.shortURL);
       })
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  function copyURL(){
+    navigator.clipboard.writeText(shortUrl);
+    setIsCopied(true);
   }
 
   return (
@@ -52,9 +66,9 @@ const App = () => {
           </button>
         </div>
         <div className="text-black border p-5 w-150 flex justify-between items-center gap-2 rounded-2xl">
-          <p>http://localhost:5000/{shortUrl}</p>
-          <div className="border h-full p-2 rounded-lg hover:cursor-pointer hover:bg-gray-200">
-            <FaCopy className="text-2xl" />
+          <p>{shortUrl}</p>
+          <div className="border h-full p-2 rounded-lg hover:cursor-pointer hover:bg-gray-200" onClick={copyURL}>
+            {isCopied ? <PiCheckFatDuotone /> : <FaCopy />}
           </div>
         </div>
       </div>
