@@ -25,3 +25,5 @@ app.use(express.json());
 app.use(cors(corsOptions), urlRoute);
 
 app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`));
+
+module.exports = app;
