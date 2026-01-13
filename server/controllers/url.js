@@ -1,5 +1,7 @@
 const shortid = require('shortid');
 const URL = require('../models/url');
+const dotenv = require('dotenv');
+dotenv.config();
 
 async function handleGenerateNewShortURL(req, res) {
     const body = req.body;
@@ -18,7 +20,7 @@ async function handleGenerateNewShortURL(req, res) {
         visitedHistory: [],
     });
 
-    return res.json({ id: shortID, shortURL: `localhost:5000/${shortID}` });
+    return res.json({ id: shortID, shortURL: `${process.env.BASE_URL}/${shortID}` });
 }
 
 async function handleRedirect(req, res) {

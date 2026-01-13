@@ -15,6 +15,8 @@ const Analytics = () => {
 
   const navigate = useNavigate();
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
+
   function analyzeUrl() {
     // setIsCopied(false );
 
@@ -23,11 +25,10 @@ const Analytics = () => {
       return;
     }
 
-
     const shortId = shortUrl.split('/').pop();
 
     axios
-      .get("http://localhost:5000/analytics/" + shortId, {
+      .get(`${API_URL}/analytics/${shortId}`, {
         url: shortId,
       })
       .then((res) => {

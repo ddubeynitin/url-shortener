@@ -7,6 +7,8 @@ import Header from '../components/Header';
 
 const Home = () => {
 
+  const API_URL = import.meta.env.VITE_API_BASE_URL;
+
   const [longUrl, setLongUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [isCopied, setIsCopied] = useState(false);
@@ -22,7 +24,7 @@ const Home = () => {
     }
     
     axios
-      .post("http://localhost:5000/", {
+      .post(`${API_URL}/`, {
         url: longUrl
       })
       .then((res) => {
