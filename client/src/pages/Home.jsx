@@ -47,21 +47,22 @@ const Home = () => {
   return (
     <>
         <Header/>
-      <div className="bg-black w-full lg:h-150 flex justify-center items-center flex-col gap-4 text-white text-center p-8">
-        <h1 className="text-5xl text-red-500 font-bold ">
+      <div className="bg-black w-full h-160 lg:h-130 flex lg:justify-center items-center flex-col gap-4 text-white text-center p-8">
+        <div className='m-5'>
+            <h1 className="text-4xl lg:text-5xl text-red-500 font-bold flex flex-col">
           Create links that perform with our powerful{" "}
           <span className="text-blue-500 animate-pulse">URL Shortener</span>
         </h1>
-        <p className="">
+        <p className="m-5 text-lg lg:text-2xl">
           Welcome to our URL shortening service! Easily create and track your
           links with just a few clicks.
         </p>
-
-        <div className="flex gap-2 w-full max-w-3xl">
+        </div>
+        <div className="lg:flex gap-2 w-full max-w-3xl">
           <input
             type="text"
             placeholder="Enter a long URL to shorten or Paste it here"
-            className="w-full h-20 bg-white p-4 rounded-lg text-gray-800 mb-4 border border-gray-300 shadow-2xl shadow-gray-300"
+            className="w-full h-15 lg:h-20 placeholder:text-sm bg-white p-4 rounded-lg text-gray-800 mb-4 border border-gray-300 shadow-2xl shadow-gray-300"
             value={longUrl}
             onChange={(e) => {
               setLongUrl(e.target.value);
@@ -69,7 +70,7 @@ const Home = () => {
             }}
           />
           <button
-            className="bg-blue-500 w-50 h-20 text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-300 hover:text-black shadow-2xl shadow-gray-300"
+            className="bg-blue-500 w-30 lg:w-50 h-10 lg:h-20 text-sm  text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-300 hover:text-black shadow-2xl shadow-gray-300"
             onClick={shortenUrl}
           >
             Shorten URL

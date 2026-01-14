@@ -3,8 +3,7 @@ import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    
-      <div className=" text-white font-bold bg-black p-4 absolute bottom-0 w-full flex justify-around gap-2">
+      <footer className=" text-white font-bold bg-black p-4 w-full flex flex-col-reverse justify-center items-center lg:justify-around gap-2">
         <p>
           Developed by{" "}
           <a
@@ -43,7 +42,7 @@ const Footer = () => {
             <FaInstagram />{" "}
           </a>
         </div>
-      </div>
+      </footer>
   )
 }
 
