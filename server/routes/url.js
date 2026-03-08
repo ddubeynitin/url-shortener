@@ -5,5 +5,8 @@ const router = express.Router();
 router.post('/', handleGenerateNewShortURL); 
 router.get('/:shortId', handleRedirect ); 
 router.get('/analytics/:shortId', handleGetAnalytics );
+router.get('/keep-alive', (req, res) => {
+  res.status(200).send("Server is keep-alive");
+});
 
 module.exports = router;
