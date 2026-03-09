@@ -1,12 +1,10 @@
 const express = require('express');
-const { handleGenerateNewShortURL, handleGetAnalytics, handleRedirect } = require('../controllers/url');
+const { handleGenerateNewShortURL, handleGetAnalytics, handleRedirect, keepAlive } = require('../controllers/url');
 const router = express.Router();
 
 router.post('/', handleGenerateNewShortURL); 
-router.get('/:shortId', handleRedirect ); 
+router.get('/keep-alive', keepAlive);
 router.get('/analytics/:shortId', handleGetAnalytics );
-router.get('/keep-alive', (req, res) => {
-  res.status(200).send("Server is keep-alive");
-});
+router.get('/:shortId', handleRedirect ); 
 
 module.exports = router;

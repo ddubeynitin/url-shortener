@@ -51,4 +51,9 @@ async function handleGetAnalytics(req, res) {
         });
 }
 
-module.exports = {handleGenerateNewShortURL , handleGetAnalytics, handleRedirect };
+function keepAlive(req, res) {
+  res.status(200).json({ message: "Server is keep-alive" });
+}
+
+
+module.exports = {handleGenerateNewShortURL , handleGetAnalytics, handleRedirect, keepAlive };

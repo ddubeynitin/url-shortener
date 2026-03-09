@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const urlRoute = require("./routes/url");
 const { connectDB } = require("./connect");
-const URL = require("./models/url");
+
 
 const app = express();
 dotenv.config();
